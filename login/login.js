@@ -14,10 +14,16 @@ $("#connection").click((e) => {
         dataType: "json",
         success: (res, status) => {
             if (res.success) {
-                localStorage.setItem('user', JSON.stringify(res.user));
-                const test = JSON.parse(localStorage.getItem('user'));
-                window.location.replace("../homepage/homepage.html");
-            } else alert("Login ou mot de passe incorrect")
+                if (res.user.is_admin == 1) {
+                    localStorage.setItem('user', JSON.stringify(res.user));
+                    const test = JSON.parse(localStorage.getItem('user'));
+                    window.location.replace("../admin/admin.html");
+                } else {
+                    localStorage.setItem('user', JSON.stringify(res.user));
+                    const test = JSON.parse(localStorage.getItem('user'));
+                    window.location.replace("../homepage/homepage.html");
+                }
+            } else alert("Login ou mot de passe erroné");
         }
     })
 })
