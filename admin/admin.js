@@ -15,3 +15,11 @@ $('#deco').click((e) => {
         }
     })
 })
+
+$('button').click(() => {
+    $('aside, #overlay').addClass('open');
+});
+
+$('#overlay').click(() => {
+    $('aside, #overlay').removeClass('open');
+})
