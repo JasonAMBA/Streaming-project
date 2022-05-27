@@ -32,10 +32,10 @@ $.ajax({
             res.arcs.forEach(arc => {
                 html += "<tr id='tr-" + arc.id_arc + "'>" +
                     "<td>" + arc.arc_number + "</td>" +
-                    "<td>" + arc.name + "</td>" +
+                    "<td>" + arc.name_arc + "</td>" +
                     "<td>" + "<img src='" + "../mangas/" + arc.picture + "'>" + "</td>" +
                     "<td>" + "<img src='" + "../mangas/" + arc.manga + "'>" + "</td>" +
-                    "<td><button onclick='wantToDelete(" + arc.id_arc + ", \"" + arc.name + "\")'>Supprimer</button></td>" +
+                    "<td><button onclick='wantToDelete(" + arc.id_arc + ", \"" + arc.name_arc + "\")'>Supprimer</button></td>" +
                     "</tr>";
             });
 

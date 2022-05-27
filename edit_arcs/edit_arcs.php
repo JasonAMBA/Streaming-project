@@ -17,7 +17,7 @@ switch ($method['choice']) {
     case 'insert':
         if (isset($method['arc_number'], $method['name'], $method['picture'], $method['manga']) && trim($method['arc_number']) != '' && trim($method['name']) != '' && trim($method['picture']) != ''&& trim($method['manga']) != '') {
 
-            $sql = "INSERT INTO arc (arc_number, name, picture, id_manga) VALUES (:arc_number, :name, :picture, :manga)"; 
+            $sql = "INSERT INTO arc (arc_number, name_arc, picture, id_manga) VALUES (:arc_number, :name, :picture, :manga)"; 
             $req = $pdo->prepare($sql);
             $req->bindValue(':arc_number', $method['arc_number']);
             $req->bindValue(':name', $method['name']);
