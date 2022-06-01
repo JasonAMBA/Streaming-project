@@ -9,6 +9,7 @@ body {
 
 .container {
     background-color: #00A3FF;
+    min-height: 100vh;
 }
 
 .center {
