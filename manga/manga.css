@@ -31,7 +31,36 @@ h4 {
 }
 
 .container {
-    min-height: 100vh;
+    min-height: auto;
     background-color: #00A3FF;
     padding: 0;
+}
+
+h2 {
+    margin: 0;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    background: cyan;
+    transition: 0.4s;
+    margin: 0;
+    height: 45px;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
+
+input[type="submit"]:hover {
+    background: darkblue;
+    color: white;
+}
+
+.comment {
+    background-color: #00A3FF;
+    display: flex;
+}
+
+.comment > p {
+    padding: 15px;
 }

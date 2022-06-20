@@ -59,3 +59,59 @@ function getArc(id) {
 }
 
 manga_id ? getArc(manga_id) : alert('error');
+
+$("input:submit").click((e) => {
+    e.preventDefault();
+
+    const content = $("#content").val();
+
+    commentUser(content);
+})
+
+$.ajax({
+    url: "../comment/comment.php",
+    type: "GET",
+    data: {
+        choice: 'select',
+        manga_id
+    },
+    dataType: 'json',
+    success: (res, status) => {
+        if (res.success) {
+            let comments = "";
+
+            res.comments.forEach(comment => {
+                comments += "<div class='comment'>" +
+                    "<p>" + "<strong>" + comment.prenom + " " + ":" + "</strong>" + "</p>" +
+                    "<p>" + comment.content + "</p>" +
+                    "<p>" + comment.date + "</p>" +
+                    "</div>";
+            });
+
+            $('#comment').append(comments);
+        } else $("#error").html(res.msg)
+    }
+})
+
+function commentUser(content) {
+    $.ajax({
+        url: "../comment/comment.php",
+        type: "POST",
+        data: {
+            choice: 'insert',
+            content,
+            manga_id
+        },
+        dataType: 'json',
+        success: (res, status) => {
+            if (res.success) {
+                const newComment = "<div class='comment'>" +
+                    "<p>" + content + "</p>" +
+                    "</div>";
+                $('#comment').append(newComment);
+            } else $("#error").html(res.msg);
+
+            document.querySelector('form').reset();
+        }
+    });
+}

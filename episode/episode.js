@@ -17,7 +17,7 @@ function getEpisode(id) {
 
                 res.episodes.forEach(episode => {
                     ep += "<div>" +
-                    "<h4> episode :" + " " + episode.number_episode + " " + ":" + " " + episode.titre_episode + "</h4>" +
+                    "<h4> episode" + " " + episode.number_episode + " : " + episode.titre_episode + "</h4>" +
                     "<video controls src='" + "../mangas/" + episode.video + "'>" + "</video>" +
                     "</div>"
                 });
