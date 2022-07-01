@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+session_regenerate_id();
 
 require_once("../../Streaming-project/utils/streamingdb.php");
 require("../../Streaming-project/utils/function.php");

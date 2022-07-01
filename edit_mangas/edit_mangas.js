@@ -170,3 +170,4 @@ function wantToDelete(id, name) {
         });
     }
 }
+

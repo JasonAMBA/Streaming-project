@@ -1,0 +1,21 @@
+body {
+    background-color: #85D6FA;
+}
+
+.center {
+    text-align: center;
+    background-color: #00C2FF;
+}
+
+h2{
+    margin: 0;
+}
+
+.container{
+    background-color: #0066FF;
+    min-height: 100vh;
+}
+
+hr{
+    color: black;
+}

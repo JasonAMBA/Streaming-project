@@ -46,7 +46,6 @@ $.ajax({
 })
 
 $("input:submit").click((e) => {
-    e.preventDefault();
 
     const id = $("#id_episode").val();
     const number = $("#number").val();

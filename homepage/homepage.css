@@ -2,9 +2,21 @@ body {
     background-color: #85D6FA;
 }
 
+.nav{
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+}
+
 .title {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     background-color: #0D78B5;
+    padding: 10px;
+}
+
+.title > h1 {
+    padding: 7px;
 }
 
 .container {
@@ -14,6 +26,7 @@ body {
 
 .center {
     text-align: center;
+    padding: 15px;
 }
 
 h1,p{
@@ -21,4 +34,80 @@ h1,p{
 }
 img {
     width: 40%;
+}
+
+.deco{
+    cursor: pointer;
+    background: cyan;
+    transition: 0.4s;
+    margin: 0;
+    height: 45px;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+.deco:hover {
+    background: red;
+}
+
+.deco:hover > a {
+    color: white;
+}
+
+.register{
+    cursor: pointer;
+    background: cyan;
+    transition: 0.4s;
+    margin: 0;
+    height: 45px;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+.register:hover {
+    background: green;
+}
+
+.register:hover > a {
+    color: white;
+}
+
+.login{
+    cursor: pointer;
+    background: cyan;
+    transition: 0.4s;
+    margin: 0;
+    height: 45px;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+.login:hover {
+    background: gold;
+}
+
+.login:hover > a {
+    color: white;
+}
+
+.img {
+    width: auto;
+}
+
+#historical > a > h2 {
+    cursor: pointer;
+    background: cyan;
+    transition: 0.4s;
+    margin: 0;
+    height: 45px;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding: 10px;
 }

@@ -49,7 +49,8 @@ function getArc(id) {
 
                 res.arcs.forEach(arc => {
                     allArc += "<div>" +
-                    "<a href='../arc/arc.html?id=" + arc.id_arc + "'>" + "<h4> Arc :" + " " + arc.arc_number + " " + arc.name_arc + "</h4>" + "</a>"
+                    "<a href='../arc/arc.html?id=" + arc.id_arc + "'>" + "<button class='arc'> Arc" + " " + arc.arc_number + " " + ":" + " " + arc.name_arc + "</button>" + "</a>" +
+                    "</div>"
                 });
 
                 $('#arcs').append(allArc);
@@ -115,3 +116,29 @@ function commentUser(content) {
         }
     });
 }
+
+if (localStorage.getItem('user')) {
+    $('#historical').show();
+} else $('#historical').hide();
+
+$('#deco').click((e) => {
+    e.preventDefault();
+    $.ajax({
+        url: "../logout/logout.php",
+        type: "GET",
+        data: {
+
+        },
+        dataType: "json",
+        success: (res, status) => {
+            if (res.success) {
+                localStorage.removeItem('user');
+                window.location.replace("../homepage/homepage.html")
+            } else alert("erreur")
+        }
+    })
+})
+
+if (localStorage.getItem('user')) {
+    $('#deco').show();
+} else $('#deco').hide();

@@ -46,7 +46,7 @@ function getEpisode(id) {
 
                 res.episodes.forEach(episode => {
                     ep += "<div>" +  
-                    "<a href='../episode/episode.html?id=" + episode.id_episode + "'>" + "<h4> Episode" + " " + episode.number_episode +  "</h4>" + "</a>" +
+                    "<button>" + "<a href='../episode/episode.html?id=" + episode.id_episode + "'>" + "<h4> Episode" + " " + episode.number_episode +  "</h4>" + "</a>" + "</button>" +
                     "</div>"
                 });
 
@@ -57,3 +57,30 @@ function getEpisode(id) {
 }
 
 arc_id ? getEpisode(arc_id) : alert('error');
+
+if (localStorage.getItem('user')) {
+    $('#historical').show();
+} else $('#historical').hide();
+
+$('#deco').click((e) => {
+    e.preventDefault();
+    $.ajax({
+        url: "../logout/logout.php",
+        type: "GET",
+        data: {
+
+        },
+        dataType: "json",
+        success: (res, status) => {
+            if (res.success) {
+                localStorage.removeItem('user');
+                window.location.replace("../homepage/homepage.html")
+            } else alert("erreur")
+        }
+    })
+})
+
+if (localStorage.getItem('user')) {
+    $('#deco').show();
+} else $('#deco').hide();
+
