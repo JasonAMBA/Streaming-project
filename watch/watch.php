@@ -33,7 +33,13 @@ switch ($method['choice']) {
 
         echo json_encode(["success" => true]);
         break;
-        
+
+    case 'delete':
+        $sql = "DELETE FROM watch WHERE id_user = '{$_SESSION['id_user']}'";
+        $pdo->query($sql);
+
+        echo json_encode(["success" => true]);
+        break;
 }
 
 

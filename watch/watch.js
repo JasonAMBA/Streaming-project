@@ -29,3 +29,48 @@ function getUser(id) {
 }
 
 user_id ? getUser(user_id) : alert('error');
+
+$('#deco').click((e) => {
+    e.preventDefault();
+    $.ajax({
+        url: "../logout/logout.php",
+        type: "GET",
+        data: {
+
+        },
+        dataType: "json",
+        success: (res, status) => {
+            if (res.success) {
+                localStorage.removeItem('user');
+                window.location.replace("../homepage/homepage.html")
+            } else alert("erreur")
+        }
+    })
+})
+
+if (localStorage.getItem('user')) {
+    $('#deco').show();
+} else $('#deco').hide();
+
+function wantToDelete(id) {
+    const wantTo = confirm("Voulez-vous vraiment supprimer votre historique ?");
+
+    if (wantTo) {
+        $.ajax({
+            url: "../watch/watch.php",
+            type: "POST",
+            data: {
+                choice: 'delete',
+                user_id
+            },
+            dataType: "json",
+            success: (res, status) => {
+                if (res.success) {
+                    $(id).remove();
+                    alert("Votre historique a bien été supprimé !");
+                    window.location.replace("watch.html");
+                }
+            }
+        });
+    }
+}

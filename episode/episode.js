@@ -1,7 +1,20 @@
 const urlParams = new URLSearchParams(window.location.search);
 const episode_id = urlParams.get('id');
 
-
+$.ajax({
+    url: "../watch/watch.php",
+    type: "POST",
+    data: {
+        choice: 'insert',
+        episode_id
+    },
+    dataType: "json",
+    success:(res, status) => {
+        if (res.success) {
+            alert("Episode ajouté à votre historique !")
+        } else alert("Erreur lors de l'ajout");
+    }
+})
 
 function getEpisode(id) {
 
@@ -60,15 +73,44 @@ if (localStorage.getItem('user')) {
 
 $.ajax({
     url: "../watch/watch.php",
-    type: "POST",
+    type: "GET",
     data: {
-        choice: 'insert',
-        episode_id
+        choice: 'select_id'
     },
-    dataType: "json",
-    success:(res, status) => {
+    dataType: 'json',
+    success: (res, status) => {
         if (res.success) {
-            alert("Episode ajouté à votre historique !")
-        } else alert("Erreur lors de l'ajout");
+            let hist = '';
+
+            res.ids.forEach(id => {
+                hist += "<a href='../watch/watch.html?id=" + id.id_user + "'>" + "<h2> Historique </h2>" + "</a>"
+            });
+
+            $('#historical').append(hist);
+        } else alert("erreur lors de l'ajout de l'historique !")
     }
-})
+});
+
+if (localStorage.getItem('user')) {
+    $('#historical').show();
+} else $('#historical').hide();
+
+$.ajax({
+    url: "../edit_mangas/edit_mangas.php",
+    type: "GET",
+    data: {
+        choice: 'select'
+    },
+    dataType: 'json',
+    success: (res, status) => {
+        if (res.success) {
+            let html = '';
+
+            res.mangas.forEach(manga => {
+                html += "<a href='../manga/manga.html?id=" + manga.id_manga + "'>" + "<img src=" + "../various/back.png" + ">" + "</a>"
+            });
+
+            $('#back').append(html);
+        } else $("#error").html(res.msg)
+    }
+});

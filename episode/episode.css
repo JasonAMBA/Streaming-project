@@ -5,6 +5,10 @@
     padding: 15px;
 }
 
+img{
+    width: 35%;
+}
+
 body {
     background-color: #04E1FF;
 }
@@ -83,5 +87,29 @@ h4 {
 }
 
 .deco:hover > a {
+    color: white;
+}
+
+#historical > a > h2 {
+    cursor: pointer;
+    background: cyan;
+    transition: 0.4s;
+    margin: 0;
+    height: 45px;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+#historical > a > h2:hover {
+    background:rgb(0, 119, 255);
+}
+
+#historical > a > h2:hover {
+    color: white;
+}
+
+#historical > a:hover {
     color: white;
 }

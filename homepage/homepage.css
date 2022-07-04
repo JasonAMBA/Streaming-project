@@ -111,3 +111,15 @@ img {
     font-size: 1.1rem;
     padding: 10px;
 }
+
+#historical > a > h2:hover {
+    background:rgb(0, 119, 255);
+}
+
+#historical > a > h2:hover {
+    color: white;
+}
+
+#historical > a:hover {
+    color: white;
+}

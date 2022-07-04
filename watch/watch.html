@@ -10,12 +10,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <div class="center">
-        <h2>Mon historique</h2>
+    <div class="nav">
+        <div>
+            <h2 class="homepage"><a href="../homepage/homepage.html">Page d'accueil</a></h2>
+        </div>
+        <div>
+            <h2 class="deco" id="deco"><a href="">Deconnexion</a></h2>
+        </div>
     </div>
     <div id="episodes" class="container">
-
+        <div class="center"><h2>Votre historique</h2></div>
+        <div class="center">
+            <button onclick="wantToDelete(id)" class="delete">Supprimer l'historique</button>
+        </div>
     </div>
+    
 </body>
 <script src="../watch/watch.js"></script>
 </html>
