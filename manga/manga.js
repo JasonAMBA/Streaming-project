@@ -118,8 +118,8 @@ function commentUser(content) {
 }
 
 if (localStorage.getItem('user')) {
-    $('#historical').show();
-} else $('#historical').hide();
+    $('#historical').css("display", "block");
+} else $('#historical').css("display", "none");
 
 $('#deco').click((e) => {
     e.preventDefault();
@@ -140,8 +140,8 @@ $('#deco').click((e) => {
 })
 
 if (localStorage.getItem('user')) {
-    $('#deco').show();
-} else $('#deco').hide();
+    $('#deco').css("display", "block");
+} else $('#deco').css("display", "none");
 
 $.ajax({
     url: "../watch/watch.php",
@@ -163,6 +163,6 @@ $.ajax({
     }
 });
 
-if (localStorage.getItem('user')) {
-    $('#historical').show();
-} else $('#historical').hide();
+if (JSON.parse(localStorage.getItem('user')).is_admin == 1) {
+    $("#redirection").prop("href", "../admin/admin.html");
+}

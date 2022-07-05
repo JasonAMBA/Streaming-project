@@ -17,16 +17,16 @@ $('#deco').click((e) => {
 })
 
 if (localStorage.getItem('user')) {
-    $('#deco').show();
-} else $('#deco').hide();
+    $('#deco').css("display", "block");
+} else $('#deco').css("display", "none");
 
 if (localStorage.getItem('user')) {
-    $('#register').hide();
-} else $('#register').show();
+    $('#register').css("display", "none");
+} else $('#register').css("display", "block");
 
 if (localStorage.getItem('user')) {
-    $('#login').hide();
-} else $('#login').show();
+    $('#login').css("display", "none");
+} else $('#login').css("display", "block");
 
 $.ajax({
     url: "../edit_mangas/edit_mangas.php",
@@ -69,5 +69,13 @@ $.ajax({
 });
 
 if (localStorage.getItem('user')) {
-    $('#historical').show();
-} else $('#historical').hide();
+    $('#historical').css("display", "block");
+} else $('#historical').css("display", "none");
+
+if (localStorage.getItem('user')) {
+    $('#condition').css("display", "none");
+} else $('#condition').css("display", "block");
+
+if (localStorage.getItem('user')) {
+    $('#manga').css("display", "block");
+} else $('#manga').css("display", "none");

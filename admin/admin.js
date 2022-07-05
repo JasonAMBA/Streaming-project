@@ -23,3 +23,23 @@ $('button').click(() => {
 $('#overlay').click(() => {
     $('aside, #overlay').removeClass('open');
 })
+
+$.ajax({
+    url: "../edit_mangas/edit_mangas.php",
+    type: "GET",
+    data: {
+        choice: 'select'
+    },
+    dataType: 'json',
+    success: (res, status) => {
+        if (res.success) {
+            let html = '';
+
+            res.mangas.forEach(manga => {
+                html += "<a href='../manga/manga.html?id=" + manga.id_manga + "'>" + "<img src='" + "../mangas/" + manga.logo + "'>" + "</a>"
+            });
+
+            $('#manga').append(html);
+        } else $("#error").html(res.msg)
+    }
+});

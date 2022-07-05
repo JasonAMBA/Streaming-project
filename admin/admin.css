@@ -1,11 +1,22 @@
 body {
-    margin: 0;
     background-color: #85D6FA;
 }
 
 .title {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     background-color: #0D78B5;
+    padding: 10px;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+}
+
+.img {
+    width: auto;
 }
 
 .container {
@@ -15,6 +26,7 @@ body {
 
 .center {
     text-align: center;
+    padding: 15px;
 }
 
 h1,p{
@@ -57,4 +69,62 @@ aside {
 
 aside.open {
     transform: translate3d(0, 0, 0);
+}
+
+.deco{
+    cursor: pointer;
+    background: cyan;
+    transition: 0.4s;
+    margin: 0;
+    height: 45px;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+.deco:hover {
+    background: red;
+}
+
+.deco:hover > a {
+    color: white;
+}
+
+.settings{
+    cursor: pointer;
+    background: cyan;
+    transition: 0.4s;
+    margin: 0;
+    height: 45px;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+.settings:hover{
+    background: crimson;
+    color: white;
+}
+
+.font{
+    font-size: x-large;
+}
+
+.edit {
+    cursor: pointer;
+    background: cyan;
+    transition: 0.4s;
+    margin: 0;
+    height: 45px;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+.edit:hover{
+    background:mediumblue;
+    color: white;
 }

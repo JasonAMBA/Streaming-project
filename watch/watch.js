@@ -49,8 +49,8 @@ $('#deco').click((e) => {
 })
 
 if (localStorage.getItem('user')) {
-    $('#deco').show();
-} else $('#deco').hide();
+    $('#deco').css("display", "block");
+} else $('#deco').css("display", "none");
 
 function wantToDelete(id) {
     const wantTo = confirm("Voulez-vous vraiment supprimer votre historique ?");
@@ -67,10 +67,14 @@ function wantToDelete(id) {
             success: (res, status) => {
                 if (res.success) {
                     $(id).remove();
-                    alert("Votre historique a bien été supprimé !");
-                    window.location.replace("watch.html");
+                    alert("Votre historique a bien été supprimé ! Veuillez recharger la page !");
+
                 }
             }
         });
     }
+}
+
+if (JSON.parse(localStorage.getItem('user')).is_admin == 1) {
+    $("#redirection").prop("href", "../admin/admin.html");
 }

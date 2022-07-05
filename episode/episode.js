@@ -46,8 +46,8 @@ function getEpisode(id) {
 episode_id ? getEpisode(episode_id) : alert('error');
 
 if (localStorage.getItem('user')) {
-    $('#historical').show();
-} else $('#historical').hide();
+    $('#historical').css("display", "block");
+} else $('#historical').css("display", "none");
 
 $('#deco').click((e) => {
     e.preventDefault();
@@ -68,8 +68,8 @@ $('#deco').click((e) => {
 })
 
 if (localStorage.getItem('user')) {
-    $('#deco').show();
-} else $('#deco').hide();
+    $('#deco').css("display", "block");
+} else $('#deco').css("display", "none");
 
 $.ajax({
     url: "../watch/watch.php",
@@ -92,8 +92,8 @@ $.ajax({
 });
 
 if (localStorage.getItem('user')) {
-    $('#historical').show();
-} else $('#historical').hide();
+    $('#historical').css("display", "block");
+} else $('#historical').css("display", "none");
 
 $.ajax({
     url: "../edit_mangas/edit_mangas.php",
@@ -114,3 +114,7 @@ $.ajax({
         } else $("#error").html(res.msg)
     }
 });
+
+if (JSON.parse(localStorage.getItem('user')).is_admin == 1) {
+    $("#redirection").prop("href", "../admin/admin.html");
+}
