@@ -18,11 +18,11 @@ function getManga(id) {
                 res.infos.forEach(info => {
                     manga += "<div>" + 
                         "<img src='" + "../mangas/" + info.logo + "'>" +
-                        "<h4> Date de sortie :" + " " + info.release_date + "</h4>" +
-                        "<h4> Résumé :" + " " + info.summary + "</h4>" +
-                        "<h4> Auteur :" + " " + info.author + "</h4>" +
-                        "<h4> Nombre d'arcs :" + " " + info.number_arcs + "</h4>" +
-                        "<h4> Nombre d'épisodes :" + " " + info.number_episodes + "</h4>" +
+                        "<strong> <h4> Date de sortie : </strong>" + " " + info.date_fr + "</h4>" +
+                        "<strong> <h4> Résumé : </strong>" + " " + info.summary + "</h4>" +
+                        "<strong><h4> Auteur : </strong>" + " " + info.author + "</h4>" +
+                        "<strong><h4> Nombre d'arcs : </strong>" + " " + info.number_arcs + "</h4>" +
+                        "<strong><h4> Nombre d'épisodes : </strong>" + " " + info.number_episodes + "</h4>" +
                         "</div>"
                 });
 
@@ -106,12 +106,9 @@ function commentUser(content) {
         dataType: 'json',
         success: (res, status) => {
             if (res.success) {
-                const newComment = "<div class='comment'>" +
-                    "<p>" + content + "</p>" +
-                    "</div>";
-                $('#comment').append(newComment);
+                alert("Votre commentaire a bien été ajouté, veuillez recharger la page !")
             } else $("#error").html(res.msg);
-
+            
             document.querySelector('form').reset();
         }
     });

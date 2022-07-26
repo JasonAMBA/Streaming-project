@@ -1,20 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const episode_id = urlParams.get('id');
 
-$.ajax({
-    url: "../watch/watch.php",
-    type: "POST",
-    data: {
-        choice: 'insert',
-        episode_id
-    },
-    dataType: "json",
-    success:(res, status) => {
-        if (res.success) {
-            alert("Episode ajouté à votre historique !")
-        } else alert("Erreur lors de l'ajout");
-    }
-})
+
 
 function getEpisode(id) {
 
@@ -33,7 +20,7 @@ function getEpisode(id) {
                 res.episodes.forEach(episode => {
                     ep += "<div>" +
                     "<h4> episode" + " " + episode.number_episode + " : " + episode.titre_episode + "</h4>" +
-                    "<video controls src='" + "../mangas/" + episode.video + "'>" + "</video>" +
+                    "<iframe src='" + episode.video + " ' WIDTH=800 HEIGHT=600 allowfullscreen>" + "</iframe>" +
                     "</div>"
                 });
 
@@ -95,26 +82,23 @@ if (localStorage.getItem('user')) {
     $('#historical').css("display", "block");
 } else $('#historical').css("display", "none");
 
-$.ajax({
-    url: "../edit_mangas/edit_mangas.php",
-    type: "GET",
-    data: {
-        choice: 'select'
-    },
-    dataType: 'json',
-    success: (res, status) => {
-        if (res.success) {
-            let html = '';
 
-            res.mangas.forEach(manga => {
-                html += "<a href='../manga/manga.html?id=" + manga.id_manga + "'>" + "<img src=" + "../various/back.png" + ">" + "</a>"
-            });
-
-            $('#back').append(html);
-        } else $("#error").html(res.msg)
-    }
-});
 
 if (JSON.parse(localStorage.getItem('user')).is_admin == 1) {
     $("#redirection").prop("href", "../admin/admin.html");
 }
+
+$.ajax({
+    url: "../watch/watch.php",
+    type: "POST",
+    data: {
+        choice: 'insert',
+        episode_id
+    },
+    dataType: "json",
+    success:(res, status) => {
+        if (res.success) {
+            alert("Episode ajouté à votre historique !")
+        } else alert("Erreur lors de l'ajout");
+    }
+})

@@ -19,7 +19,11 @@ function getArc(id) {
                     arc += "<div>" +  
                         "<h4> Arc" + " " + info.arc_number + " " + ": " + info.name_arc + "</h4>" +
                         "<img src='" + "../mangas/" + info.picture + "'>" +
-                        "</div>"
+                        "</div>" +
+
+                        "<div>" +
+                        "<h4> Synopsis </h4>" +
+                        "<p>" + info.synopsis + "</p>"
                 });
 
                 $('#arc').append(arc);
@@ -84,25 +88,7 @@ if (localStorage.getItem('user')) {
     $('#deco').css("display", "block");
 } else $('#deco').css("display", "none");
 
-$.ajax({
-    url: "../edit_mangas/edit_mangas.php",
-    type: "GET",
-    data: {
-        choice: 'select'
-    },
-    dataType: 'json',
-    success: (res, status) => {
-        if (res.success) {
-            let html = '';
 
-            res.mangas.forEach(manga => {
-                html += "<a href='../manga/manga.html?id=" + manga.id_manga + "'>" + "<img src=" + "../various/back.png" + ">" + "</a>"
-            });
-
-            $('#back').append(html);
-        } else $("#error").html(res.msg)
-    }
-});
 
 $.ajax({
     url: "../watch/watch.php",

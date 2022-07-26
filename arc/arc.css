@@ -17,12 +17,20 @@ body {
     background-color: #00A3FF;
 }
 
+.arc{
+    border: 3px solid rgb(47, 0, 255);
+}
+
 img {
     width: 35%;
 }
 
 h4 {
     padding: 5px;
+}
+
+p {
+    font-size: 1.2rem;
 }
 
 .container {

@@ -15,8 +15,8 @@ form {
     grid-template-rows: repeat(4, 104px);
     padding: 60px 45px 30px;
     border-radius: 16px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
     position: relative;
+    box-shadow: 5px 5px 5px blue;
   }
 
 label {

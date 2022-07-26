@@ -15,18 +15,45 @@ switch ($method['choice']) {
         break;
 
     case 'insert':
-        if (isset($method['arc_number'], $method['name'], $method['picture'], $method['manga']) && trim($method['arc_number']) != '' && trim($method['name']) != '' && trim($method['picture']) != ''&& trim($method['manga']) != '') {
+        if (isset($method['arc_number'], $method['name'], $method['picture'], $method['manga'], $method['synopsis']) && trim($method['arc_number']) != '' && trim($method['name']) != '' && trim($method['picture']) != '' && trim($method['manga']) != '' && trim($method['synopsis']) != '') {
 
-            $sql = "INSERT INTO arc (arc_number, name_arc, picture, id_manga) VALUES (:arc_number, :name, :picture, :manga)"; 
+            $sql = "INSERT INTO arc (arc_number, name_arc, picture, id_manga, synopsis) VALUES (:arc_number, :name, :picture, :manga, :synopsis)"; 
             $req = $pdo->prepare($sql);
             $req->bindValue(':arc_number', $method['arc_number']);
             $req->bindValue(':name', $method['name']);
             $req->bindValue(':picture', $method['picture']);
             $req->bindValue(':manga', $method['manga']);
+            $req->bindValue(':synopsis', $method['synopsis']);
             $req->execute();
 
             echo json_encode(["success" => true, "newid" => $pdo->insert_id]);
         } else echo json_encode(["success" => false, "msg" => "Toutes les données n'ont pas été transmises"]);
+        break;
+
+    case 'select_id':
+        if (isset($method['id'])) {
+            $res = $pdo->query("SELECT * FROM arc WHERE id_arc = {$method['id']}");
+            $arc = resultAsArray($res)[0];
+
+            echo json_encode(["success" => true, "arc" => $arc]);
+        } else echo json_encode(["success" => false, "msg" => "L'id' du manga n'a pas été transmis"]);
+        break;
+
+    case 'update':
+        if (isset($method['arc_number'], $method['name'], $method['picture'], $method['manga'], $method['synopsis']) && trim($method['arc_number']) != '' && trim($method['name']) != '' && trim($method['picture']) != '' && trim($method['manga']) != '' && trim($method['synopsis']) != '') {
+
+            $sql = "UPDATE arc SET arc_number = :arc_number, name_arc = :name, picture = :picture, id_manga = :manga, synopsis = :synopsis WHERE id_arc = {$method['id']}";
+            $pdo->query($sql);
+            $req = $pdo->prepare($sql);
+            $req->bindValue(':arc_number', $method['arc_number']);
+            $req->bindValue(':name', $method['name']);
+            $req->bindValue(':picture', $method['picture']);
+            $req->bindValue(':manga', $method['manga']);
+            $req->bindValue(':synopsis', $method['synopsis']);
+            $req->execute();
+
+            echo json_encode(["success" => true, 'sql' => $sql]);
+        } else echo json_encode(["success" => false, "msg" => "Une ou plusieurs données n'ont pas été transmise"]);
         break;
 
     case 'delete':

@@ -26,7 +26,7 @@ switch($method['choice']) {
             $req->bindValue(':id_manga', $method['manga_id']);
             $req->execute();
 
-            echo json_encode(["success" => true, "newid" => $pdo->insert_id]);
+            echo json_encode(["success" => true]);
         } else echo json_encode(["success" => false, "msg" => "Toutes les données n'ont pas été transmises"]);
         break;
 }

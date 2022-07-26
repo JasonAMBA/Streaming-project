@@ -8,6 +8,12 @@ body {
     padding: 15px;
 }
 
+.newnav{
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+}
+
 .title {
     display: flex;
     justify-content: center;
@@ -20,8 +26,8 @@ body {
 }
 
 .container {
-    background-color: #00A3FF;
-    min-height: 100vh;
+    background-image: linear-gradient(to right, blue, skyblue);
+    min-height: 110vh;
 }
 
 .center {
@@ -32,9 +38,7 @@ body {
 h1,p{
     margin: 0;
 }
-img {
-    width: 40%;
-}
+
 
 .deco{
     cursor: pointer;
@@ -114,9 +118,6 @@ img {
 
 #historical > a > h2:hover {
     background:rgb(0, 119, 255);
-}
-
-#historical > a > h2:hover {
     color: white;
 }
 
@@ -126,4 +127,40 @@ img {
 
 .font{
     font-size:x-large;
+}
+
+#update > a > h2 {
+    cursor: pointer;
+    background: cyan;
+    transition: 0.4s;
+    margin: 0;
+    height: 45px;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+#update > a > h2:hover{
+    background:turquoise;
+}
+
+#update > a:hover{
+    color: white;
+}
+
+a > img {
+    width: 35%;
+    margin: 15px;
+}
+
+a > img:hover {
+    border: 3px solid skyblue;
+    padding: 15px;
+    
+}
+
+#manga {
+    text-align: center;
+    padding: 15px;
 }
